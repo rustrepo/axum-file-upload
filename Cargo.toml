@@ -1,0 +1,11 @@
+[package]
+name = "axum-file-upload"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.6", features = ["multipart"] }
+tokio = { version = "1", features = ["full"] }
+hyper = { version = "0.14", features = ["full"] }
+tower = "0.4"
+
