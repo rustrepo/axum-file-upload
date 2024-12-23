@@ -1,3 +1,19 @@
+/*
+[dependencies]
+axum = { version = "0.6", features = ["multipart"] }
+tokio = { version = "1", features = ["full"] }
+hyper = { version = "0.14", features = ["full"] }
+tower = "0.4"
+reqwest = { version = "0.11", features = ["json"] }
+chrono = "0.4"
+hmac = "0.12"
+sha2 = "0.10"
+urlencoding = "2.1"
+dotenv = "0.15"
+walkdir = "2.3"
+hex = "0.4"
+*/
+
 use axum::{
     body::Body,
     extract::Multipart,
@@ -75,7 +91,6 @@ async fn handle_upload(mut multipart: Multipart) -> impl IntoResponse {
 
     let mut uploaded_files = Vec::new();
 
-    // Loop over each file part in the multipart data
     while let Ok(Some(field)) = multipart.next_field().await {
         if let Some(file_name) = field.file_name().map(|f| f.to_string()) {
             let file_path = PathBuf::from(UPLOAD_DIR).join(&file_name);
