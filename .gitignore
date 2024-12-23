@@ -2,3 +2,5 @@
 Cargo.lock
 /working-code
 uploads
+.DS_Store
+*.env
